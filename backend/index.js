@@ -1,7 +1,8 @@
 const express = require("express");
 const mongoConnect = require("./db");
 const app = express();
-const port = 8000;
+require("dotenv").config()
+const port = process.env.NODE_PORT ||  8000;
 
 mongoConnect();
 app.use(express.json());
