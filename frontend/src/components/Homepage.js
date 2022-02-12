@@ -8,8 +8,7 @@ const Homepage = () => {
     return(
         <div className="md:flex w-screen h-screen relative">
             <div className='lg:w-1/6 hidden lg:block'><Sidebar /></div>
-            {/* <Notes /> */}
-            <Auth />
+            <Notes />
         </div>)
 };
 

@@ -12,6 +12,7 @@ router.post('/register',[
     body('password','password must contain atleast 6 characters').isLength({min:6})
 ], async(req,res)=>{
     try {
+        console.log(req.body.username," ",req.body.email," ",req.body.password)
         let success = false
         const err = validationResult(req)
         if(!err.isEmpty()){
@@ -46,6 +47,7 @@ router.post('/login',[
     body('email','Enter a valid email').isEmail(),
 ],async (req,res)=>{
     try {
+        console.log(req.body.email," ",req.body.password)
         let success = false;
         const err = validationResult(req)
         if(!err.isEmpty()){

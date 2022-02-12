@@ -1,33 +1,50 @@
 import React, { useContext, useEffect, useState } from 'react';
-import NoteContext from '../context/NoteContext';
+import NoteContext from '../../context/NoteContext';
 
 const AddNote = () => {
-    const { addNote, setAddNote } = useContext(NoteContext)
+    const { addNote, setAddNote, link, setNotes, notes } = useContext(NoteContext)
 
     // useState hook
     const [title, setTitle] = useState("");
     const [description, setDescription] = useState("");
-    const [tag, setTag] = useState("");
+    const [tag, setTag] = useState("todo");
     const [othertag, setOthertag] = useState("");
 
-    //useEffect hook
-
+    //adding note endpoint
+    const addnote = async () => {
+        try {
+            const response = await fetch(`${link}/inotesApi/notes/addnote`, {
+                method: "POST",
+                headers: {
+                    'Content-Type': "application/json",
+                    'auth-token': localStorage.getItem("inotetoken"),
+                },
+                body: JSON.stringify({ title: title, description: description, tag:tag })
+            })
+            const json = await response.json();
+            setNotes(notes.concat(json))
+            console.log(json)
+            setAddNote(false)
+        } catch (error) {
+            console.log(error)
+        }
+    }
 
     return <div className={`w-full flex justify-center ${addNote ? "block" : "hidden"}`}>
         <div className="md:max-w-3xl w-11/12 lg:max-w-5xl">
             <div className='text-2xl md:text-3xl lg:text-4xl py-4 text-green-600 font-serif'>Create a new note</div>
-            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4">
+            <form className="bg-white shadow-md rounded px-8 pt-6 pb-8 mb-4" onSubmit={addnote}>
                 <div className="mb-4">
                     <label className="block text-green-600 text-sm font-bold mb-2" htmlFor="username">
                         Title
                     </label>
-                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-green-600" id="title" type="text" value={title} onChange={(e) => { setTitle(e.target.value) }} placeholder="Title" />
+                    <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-green-600" id="title" name='title' type="text" value={title} onChange={(e) => { setTitle(e.target.value) }} placeholder="Title" />
                 </div>
                 <div className="mb-2">
                     <label className="block text-green-600 text-sm font-bold mb-2" htmlFor="description">
                         Description
                     </label>
-                    <textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-green-600" id="description" value={description} onChange={(e) => { setDescription(e.target.value) }} type="text" rows={5} placeholder="Note description....." />
+                    <textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-green-600" id="description" name='description' value={description} onChange={(e) => { setDescription(e.target.value) }} type="text" rows={5} placeholder="Note description....." />
                 </div>
                 <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="tag" className="block text-sm font-medium text-green-600">
@@ -48,14 +65,13 @@ const AddNote = () => {
                             <option>money</option>
                             <option>other</option>
                         </select>
-                        <input className={`${tag==="other" ? 'block' : 'hidden'} shadow appearance-none border rounded w-1/2 md:w-1/3 lg:w-1/4 py-2 px-3 text-gray-700 leading-tight focus:outline-green-600`} id="title" type="text" value={othertag} onChange={(e) => { setOthertag(e.target.value) }} placeholder="Other Tag.." required />
                     </div>
                 </div>
                 <div className="flex items-center py-4 space-x-2">
-                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline shadow-sm shadow-neutral-500" type="button">
+                    <button className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline shadow-sm shadow-neutral-500" type="submit">
                         Create
                     </button>
-                    <button className="bg-green-100 hover:bg-green-600 duration-150 text-green-600 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" onClick={() => { setAddNote(false) }} type="button">
+                    <button className="bg-green-100 hover:bg-green-600 duration-150 text-green-600 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" onClick={() => { setAddNote(false); setTitle(""); setDescription(""); setTag(""); setOthertag("") }} type="button">
                         Cancel
                     </button>
                 </div>

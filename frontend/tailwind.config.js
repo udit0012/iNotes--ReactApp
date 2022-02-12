@@ -4,8 +4,15 @@ module.exports = {
   ],
   theme: {
     extend: {
-      fontFamily:{
-        serif:['"Montserrat Alternates"', 'sans-serif']
+      screens: {
+        sm: '640px',
+        md: '800px',
+        lg: '1400px',
+        xl: '1580px',
+        '2xl': '1700px',
+      },
+      fontFamily: {
+        serif: ['"Montserrat Alternates"', 'sans-serif']
       }
     },
   },

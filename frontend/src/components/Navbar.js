@@ -1,7 +1,11 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
+import { Link } from 'react-router-dom';
+import NoteContext from '../context/NoteContext';
+import Spinner from './loaders/Spinner';
 import Sidebar from './Sidebar';
 
 const Navbar = () => {
+    const {logout,user} = useContext(NoteContext)
     const d = new Date()
     const [menu, setMenu] = useState(false);
     return <div className='md:w-full flex justify-between lg:py-4'>
@@ -23,8 +27,15 @@ const Navbar = () => {
             <span>{d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
         </div>
         <div className='flex items-center px-4 md:px-7 text-green-600 text-2xl font-serif'>
-            <span className='hidden md:block'>Udit</span>
-            <span className="material-icons text-4xl px-2">account_circle</span>
+            {localStorage.getItem("inotetoken") ? <>
+                {!user?<><Spinner /></>:<span className='hidden md:block capitalize cursor-pointer'>{user.username}</span>}
+                <span className="material-icons text-4xl px-2 cursor-pointer">account_circle</span>
+                <button onClick={()=>{logout()}} className="bg-green-100 hover:bg-green-600 text-sm border-green-600 border-[1px] duration-150 text-green-600 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" type="button">
+                    Logout
+                </button>
+            </> : <><Link to="/auth" className="bg-green-100 hover:bg-green-600 text-lg border-[1px] border-green-600 duration-150 text-green-600 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" type="button">
+                Login
+            </Link></>}
         </div>
         <div className={`${menu ? "block" : "hidden"} h-full w-full fixed pb-4 lg:hidden backdrop-blur-[2px]`}><Sidebar menu={menu} setMenu={setMenu} />
             <div className='w-full h-full' onClick={() => { setMenu(!menu) }}></div>
