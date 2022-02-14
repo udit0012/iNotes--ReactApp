@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import NoteContext from '../../context/NoteContext';
 
 const NoteItem = ({ note }) => {
-    const { link, deletenote, fetchallnotes } = useContext(NoteContext)
+    const { link, deletenote, fetchallnotes,showAlert } = useContext(NoteContext)
     const [modaltoggle, setModaltoggle] = useState(false)
     const [unote, setUnote] = useState({ title: note.title, description: note.description, tag: note.tag })
     const bgcolor = note.tag === "work" ? 'bg-rose-500' : note.tag === "reminder" ? 'bg-amber-500' : note.tag === "todo" ? 'bg-cyan-500' : note.tag === "money" ? 'bg-emerald-500' : 'bg-purple-500'
@@ -31,8 +31,9 @@ const NoteItem = ({ note }) => {
             const json = await response.json()
             fetchallnotes()
             setModaltoggle(false)
+            showAlert("Note updated","success")
         } catch (error) {
-            console.log(error);
+            showAlert(error.message,"error")
         }
     }
     const onchange = (e) => {
@@ -52,7 +53,7 @@ const NoteItem = ({ note }) => {
                     <button onClick={() => { setModaltoggle(true) }}><span className="material-icons md:text-2xl text-zinc-500 cursor-pointer">edit</span></button>
                 </div>
             </div>
-            <div className='px-4 py-2 font-serif'>{note.description}</div>
+            <div className='px-4 py-2 font-serif whitespace-pre-wrap'>{note.description}</div>
         </div>
         {modaltoggle && <div className="flex items-center md:justify-center md:items-start bg-neutral-600 bg-opacity-40 fade fixed top-0 left-0 w-full h-full outline-none overflow-x-hidden overflow-y-auto backdrop-blur-[2px]" id="updatedialog" role="dialog">
             <div className='w-full h-full absolute ' onClick={() => { setModaltoggle(false) }}></div>
@@ -76,7 +77,7 @@ const NoteItem = ({ note }) => {
                                 <label className="block text-green-600 text-sm font-bold mb-2" htmlFor="description">
                                     Description
                                 </label>
-                                <textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-green-600" id="description" name='description' value={unote.description} onChange={onchange} type="text" rows={5} placeholder="Note description....." />
+                                <textarea className="shadow appearance-none whitespace-pre-wrap border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-green-600" id="description" name='description' value={unote.description} onChange={onchange} type="text" rows={5} placeholder="Note description....." />
                             </div>
                             <div className="col-span-6 sm:col-span-3">
                                 <label htmlFor="tag" className="block text-sm font-medium text-green-600">

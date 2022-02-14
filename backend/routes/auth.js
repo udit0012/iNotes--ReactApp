@@ -12,7 +12,6 @@ router.post('/register',[
     body('password','password must contain atleast 6 characters').isLength({min:6})
 ], async(req,res)=>{
     try {
-        console.log(req.body.username," ",req.body.email," ",req.body.password)
         let success = false
         const err = validationResult(req)
         if(!err.isEmpty()){
@@ -38,7 +37,6 @@ router.post('/register',[
         success = true
         res.json({success,authtoken})
     } catch (error) {
-        console.log(error.message)
         return res.status(500).json({error:"Internal server error"})
     }
 })
@@ -47,7 +45,6 @@ router.post('/login',[
     body('email','Enter a valid email').isEmail(),
 ],async (req,res)=>{
     try {
-        console.log(req.body.email," ",req.body.password)
         let success = false;
         const err = validationResult(req)
         if(!err.isEmpty()){
@@ -70,7 +67,6 @@ router.post('/login',[
         success = true
         res.json({success,authtoken})
     } catch (error) {
-        console.log(error.message);
         return res.status(500).json({error:"Internal server error"})
     }
 })
@@ -81,7 +77,6 @@ router.get('/getuser',fetchuser,async(req,res)=>{
         const user = await User.findById(userid).select('-password')
         res.json(user)
     } catch (error) {
-        console.log(error.message);
         return res.status(500).json({error:"Internal server error"})
     }
 })

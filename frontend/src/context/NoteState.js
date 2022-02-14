@@ -5,8 +5,19 @@ import NoteContext from './NoteContext';
 const NoteState = (props) => {
     const navigate = useNavigate()
     const [addNote, setAddNote] = useState(false);
+    const [alert, setAlert] = useState(null)
     const [user, setUser] = useState({})
     const link = 'http://localhost:8000'
+
+    const showAlert = (message, type) => {
+        setAlert({
+            message: message,
+            type: type
+        })
+        setTimeout(() => {
+            setAlert(null);
+        }, 2000);
+    }
 
     const fetchuser = async () => {
         if (localStorage.getItem("inotetoken")) {
@@ -22,21 +33,20 @@ const NoteState = (props) => {
                 localStorage.setItem("inoteuser", JSON.stringify(json))
                 setUser(json)
             } catch (error) {
-                console.log(error)
+                showAlert("Some issue occured try login again","error")
             }
         }
     }
     useEffect(() => {
         if (localStorage.getItem("inoteuser") && !user.username) {
             const userinfo = JSON.parse(localStorage.getItem("inoteuser"))
-            console.log(userinfo);
             setUser(userinfo)
-            console.log("user",user)
         }
     })
     const logout = () => {
         localStorage.removeItem("inotetoken")
         localStorage.removeItem("inoteuser")
+        showAlert("Logged out Successfully","success")
         navigate("/")
     }
     //notes usestate hooks
@@ -45,21 +55,22 @@ const NoteState = (props) => {
     const [delload, setDelload] = useState(false)
     //notes endpoints
     const fetchallnotes = async()=>{
-        try {
-            setFetchload(true)
-            const response = await fetch(`${link}/inotesApi/notes/fetchallnotes`,{
-                method: "GET",
-                headers: {
-                    'Content-Type': "application/json",
-                    'auth-token': localStorage.getItem("inotetoken"),
-                }
-            });
-            const json = await response.json()
-            setNotes(json)
-            setFetchload(false)
-            console.log(json)
-        } catch (error) {
-            console.log(error)
+        if(localStorage.getItem("inotetoken")){
+            try {
+                setFetchload(true)
+                const response = await fetch(`${link}/inotesApi/notes/fetchallnotes`,{
+                    method: "GET",
+                    headers: {
+                        'Content-Type': "application/json",
+                        'auth-token': localStorage.getItem("inotetoken"),
+                    }
+                });
+                const json = await response.json()
+                setNotes(json)
+                setFetchload(false)
+            } catch (error) {
+                showAlert("Some Issue occured try login again","error")
+            }
         }
     }
 
@@ -74,14 +85,15 @@ const NoteState = (props) => {
                 }
             })
             const json = await response.json();
-            console.log(json)
             setDelload(false)
             setNotes(notes.filter((u)=>u._id!==noteid))
+            showAlert("Note Deleted","success")
         } catch (error) {
-            console.log(error)
+            showAlert("Note not deleted or note doesn't exists","warning")
         }
     }
     return <NoteContext.Provider value={{
+        alert,showAlert,
         addNote, setAddNote,
         link,
         user, setUser,

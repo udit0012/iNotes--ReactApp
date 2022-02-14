@@ -26,14 +26,14 @@ const Navbar = () => {
             </span>
             <span>{d.toLocaleDateString('en-US', { weekday: 'short', month: 'short', day: 'numeric' })}</span>
         </div>
-        <div className='flex items-center px-4 md:px-7 text-green-600 text-2xl font-serif'>
+        <div className='flex items-center px-4 md:px-7 text-green-600 text-lg md:text-2xl font-serif'>
             {localStorage.getItem("inotetoken") ? <>
                 {!user?<><Spinner /></>:<span className='hidden md:block capitalize cursor-pointer'>{user.username}</span>}
                 <span className="material-icons text-4xl px-2 cursor-pointer">account_circle</span>
-                <button onClick={()=>{logout()}} className="bg-green-100 hover:bg-green-600 text-sm border-green-600 border-[1px] duration-150 text-green-600 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" type="button">
+                <button onClick={()=>{logout()}} className="bg-green-100 hover:bg-green-600 text-sm border-green-600 border-[1px] duration-150 text-green-600 hover:text-white font-bold py-1 md:py-2 px-3 md:px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" type="button">
                     Logout
                 </button>
-            </> : <><Link to="/auth" className="bg-green-100 hover:bg-green-600 text-lg border-[1px] border-green-600 duration-150 text-green-600 hover:text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" type="button">
+            </> : <><Link to="/auth" className="bg-green-100 hover:bg-green-600 text-lg border-[1px] border-green-600 duration-150 text-green-600 hover:text-white font-bold py-1 md:py-2 px-3 md:px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" type="button">
                 Login
             </Link></>}
         </div>

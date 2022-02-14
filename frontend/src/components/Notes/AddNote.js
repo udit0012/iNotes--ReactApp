@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react';
 import NoteContext from '../../context/NoteContext';
 
 const AddNote = () => {
-    const { addNote, setAddNote, link, setNotes, notes } = useContext(NoteContext)
+    const { addNote, setAddNote, link, setNotes, notes,showAlert } = useContext(NoteContext)
 
     // useState hook
     const [title, setTitle] = useState("");
@@ -23,10 +23,10 @@ const AddNote = () => {
             })
             const json = await response.json();
             setNotes(notes.concat(json))
-            console.log(json)
+            showAlert("Note added successfully","success")
             setAddNote(false)
         } catch (error) {
-            console.log(error)
+            showAlert(error.message,"error")
         }
     }
 
@@ -44,7 +44,7 @@ const AddNote = () => {
                     <label className="block text-green-600 text-sm font-bold mb-2" htmlFor="description">
                         Description
                     </label>
-                    <textarea className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-green-600" id="description" name='description' value={description} onChange={(e) => { setDescription(e.target.value) }} type="text" rows={5} placeholder="Note description....." />
+                    <textarea className="shadow appearance-none border rounded w-full py-2 px-3 whitespace-pre-wrap text-gray-700 mb-3 leading-tight focus:outline-green-600" id="description" name='description' value={description} onChange={(e) => { setDescription(e.target.value) }} type="text" rows={5} placeholder="Note description....." />
                 </div>
                 <div className="col-span-6 sm:col-span-3">
                     <label htmlFor="tag" className="block text-sm font-medium text-green-600">

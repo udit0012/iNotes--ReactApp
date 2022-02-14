@@ -4,7 +4,7 @@ import NoteContext from '../../context/NoteContext';
 
 const Register = ({setToggle}) => {
   const navigate = useNavigate()
-  const {link,fetchuser} = useContext(NoteContext)
+  const {link,fetchuser,showAlert} = useContext(NoteContext)
   //useState hook
   const [username, setUsername] = useState("");
   const [email, setEmail] = useState("");
@@ -14,11 +14,10 @@ const Register = ({setToggle}) => {
   const submitregister = async(e)=>{
     e.preventDefault()
     if(password!==cpassword){
-      alert("password entered are different")
+      showAlert("password entered are different","warning")
       return
     }
     try {
-      console.log(username," ",email," ",password)
       const response = await fetch(`${link}/inotesApi/auth/register`, {
         method: "POST",
         headers: {
@@ -31,11 +30,12 @@ const Register = ({setToggle}) => {
         localStorage.setItem("inotetoken", json.authtoken)
         fetchuser()
         navigate("/")
+        showAlert("Registered successfully","success")
       }else{
-        console.log(json);
+        showAlert("User already exists","warning")
       }
     } catch (error) {
-      console.log(error)
+      showAlert(error.message,"error")
     }
   }
 
