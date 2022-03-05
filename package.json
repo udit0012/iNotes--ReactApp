@@ -7,16 +7,8 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "nodemon backend/index.js"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/udit0012/iNotes--ReactApp.git"
-  },
   "author": "Udit",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/udit0012/iNotes--ReactApp/issues"
-  },
-  "homepage": "https://github.com/udit0012/iNotes--ReactApp#readme",
   "dependencies": {
     "bcryptjs": "^2.4.3",
     "cors": "^2.8.5",

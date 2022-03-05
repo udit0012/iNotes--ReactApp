@@ -4,7 +4,7 @@ const jwt = require("jsonwebtoken")
 const {body,validationResult}=require("express-validator");
 const User = require("../models/User");
 const fetchuser = require("../middleware/fetchuser");
-const jwt_key = "indiaismycountry"
+const jwt_key = process.env.JWT_SECRET
 
 router.post('/register',[
     body('username','username must contain atleast 3 characters').isLength({min:3}),
