@@ -45,25 +45,25 @@ const Register = ({setToggle}) => {
         <label className="block text-green-600 text-sm font-bold mb-1" htmlFor="username">
           Username
         </label>
-        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-green-600" id="username" name="username" type="text" value={username} onChange={(e) => { setUsername(e.target.value) }} placeholder="Username" />
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-green-600" id="username" name="username" type="text" value={username} onChange={(e) => { setUsername(e.target.value) }} placeholder="Username" required minLength={3} />
       </div>
       <div className="mb-2">
         <label className="block text-green-600 text-sm font-bold mb-1" htmlFor="email">
           Email
         </label>
-        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-green-600" id="email" name="email" type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} placeholder="john@gmail.com" />
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-green-600" id="email" name="email" type="email" value={email} onChange={(e) => { setEmail(e.target.value) }} placeholder="john@gmail.com" required />
       </div>
       <div className="mb-2">
         <label className="block text-green-600 text-sm font-bold mb-1" htmlFor="password">
           Password
         </label>
-        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-green-600" id="password" name="password" value={password} onChange={(e) => { setPassword(e.target.value) }} type="password" placeholder="Password" />
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-green-600" id="password" name="password" value={password} onChange={(e) => { setPassword(e.target.value) }} type="password" placeholder="Password" required minLength={6} />
       </div>
       <div className="mb-2">
         <label className="block text-green-600 text-sm font-bold mb-1" htmlFor="cpassword">
           Confirm Password
         </label>
-        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-green-600" id="cpassword" name="cpassword" value={cpassword} onChange={(e) => { setCpassword(e.target.value) }} type="password" placeholder="Confirm Password" />
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-green-600" id="cpassword" name="cpassword" value={cpassword} onChange={(e) => { setCpassword(e.target.value) }} type="password" placeholder="Confirm Password" required />
       </div>
       <button className='underline font-serif text-sm cursor-pointer'onClick={()=>{setToggle(false)}}>Already have an account?</button>
       <div className="flex items-center py-4 space-x-2">
