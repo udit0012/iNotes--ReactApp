@@ -24,7 +24,7 @@ const Notes = () => {
         })}
       </div>
     </> :
-      <div className='w-full h-full flex justify-center py-64'>
+      <div className='w-full flex justify-center py-64'>
         <div>
           <div className='w-full flex items-center text-3xl md:text-5xl font-bold text-neutral-600'><span className='material-icons text-3xl md:text-5xl'>add</span>Create a new note</div>
           <div className='flex justify-center text-lg md:text-2xl font-medium text-neutral-400'>Or login to see your notes</div>

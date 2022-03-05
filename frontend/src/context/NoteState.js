@@ -12,8 +12,7 @@ const NoteState = (props) => {
 
     const showAlert = (message, type) => {
         setAlert({
-            message: message,
-            type: type
+            message, type
         })
         setTimeout(() => {
             setAlert(null);
@@ -94,7 +93,7 @@ const NoteState = (props) => {
         }
     }
     return <NoteContext.Provider value={{
-        alert,showAlert,
+        alert, showAlert,
         addNote, setAddNote,
         link,
         user, setUser,

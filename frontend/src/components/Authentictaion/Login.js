@@ -1,12 +1,12 @@
 import React, { useContext, useState } from 'react';
 import NoteContext from '../../context/NoteContext';
-import {useNavigate} from "react-router-dom"
+import { useNavigate } from "react-router-dom"
 
 const Login = ({ setToggle }) => {
   const navigate = useNavigate()
-  const { link,fetchuser,showAlert } = useContext(NoteContext)
+  const { link, fetchuser, showAlert } = useContext(NoteContext)
   //useState hook
-  const [credentials, setCredentials] = useState({email:"",password:""})
+  const [credentials, setCredentials] = useState({ email: "", password: "" })
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   //login endpoint
@@ -24,14 +24,15 @@ const Login = ({ setToggle }) => {
       if (json.success) {
         localStorage.setItem("inotetoken", json.authtoken)
         fetchuser()
+        showAlert("Login Successfull", "success")
         navigate("/")
-        showAlert("Login Successfull","success")
-      }else{
-        showAlert("Invalid credentials","success")
+      }
+      if (!json.success) {
+        showAlert("Invalid credentials or Register if dont have an account", "warning")
         return
       }
     } catch (error) {
-      showAlert(error.message,"error")
+      showAlert(error.message, "error")
     }
   }
 
@@ -39,18 +40,19 @@ const Login = ({ setToggle }) => {
   //   setCredentials({ ...credentials, [e.target.name]: e.target.value })
   // }
   return <div className='w-full h-full flex px-5 justify-center'>
+
     <form className="px-3 py-3 w-full" onSubmit={submitlogin}>
       <div className="mb-4">
         <label className="block text-green-600 text-sm font-bold mb-2" htmlFor="email">
           Email
         </label>
-        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-green-600" id="email" name="email" type="text" onChange={(e)=>{setEmail(e.target.value)}} value={email} placeholder="john@gmail.com" required/>
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-green-600" id="email" name="email" type="text" onChange={(e) => { setEmail(e.target.value) }} value={email} placeholder="john@gmail.com" required />
       </div>
       <div className="mb-2">
         <label className="block text-green-600 text-sm font-bold mb-2" htmlFor="password">
           Password
         </label>
-        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-green-600" id="password" name="password" onChange={(e)=>{setPassword(e.target.value)}} value={password} type="password" placeholder="Password" required/>
+        <input className="shadow appearance-none border rounded w-full py-2 px-3 text-gray-700 mb-3 leading-tight focus:outline-green-600" id="password" name="password" onChange={(e) => { setPassword(e.target.value) }} value={password} type="password" placeholder="Password" required />
       </div>
       <button className='font-serif underline text-sm' onClick={() => { setToggle(true) }}>Create an account</button>
       <div className="flex items-center py-4 space-x-2">
