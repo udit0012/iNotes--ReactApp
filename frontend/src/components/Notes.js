@@ -35,7 +35,7 @@ const Notes = () => {
       </> :
         <div className='w-full flex justify-center py-64'>
           <div>
-            <div className='w-full flex items-center text-3xl md:text-5xl font-bold text-neutral-600'><span className='material-icons text-3xl md:text-5xl'>add</span>Create a new note</div>
+            <div className='w-full flex items-center text-3xl md:text-5xl font-bold text-neutral-600'>{localStorage.getItem("inotetoken") && <span className='material-icons text-3xl md:text-5xl'>add</span>}Create a new note</div>
             {localStorage.getItem("inotetoken") ? <button onClick={() => { setAddNote(true) }} className="flex items-center mx-auto my-2 bg-green-600 hover:bg-green-700 text-sm md:text-xl duration-150 text-white font-bold py-1 md:py-2 px-3 md:px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" type="button">
               <span className='material-icons text-lg md:text-2xl'>add</span>
               Create first note
