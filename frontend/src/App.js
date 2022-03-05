@@ -14,7 +14,7 @@ const App = () => {
   return (
     <Router>
       <NoteState>
-        <div className="w-screen h-screen">
+        <div className="w-full h-full">
           <Alert />
           <Routes>
             <Route path="/" exact element={<Homepage />} />

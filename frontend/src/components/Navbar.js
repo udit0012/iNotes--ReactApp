@@ -9,9 +9,9 @@ const Navbar = () => {
     const d = new Date()
     const [menu, setMenu] = useState(false);
     return <div className='md:w-full flex justify-between lg:py-4'>
-        <div className="lg:hidden text-3xl md:text-4xl lg:text-5xl py-2 md:px-6 md:py-4 text-green-600 font-serif">
+        <div className="lg:hidden text-2xl md:text-4xl lg:text-5xl py-2 md:px-6 md:py-4 text-green-600 font-serif">
             <div className='flex md:justify-between items-center'>
-                <span className='material-icons lg:hidden mx-3 p-1 text-3xl cursor-pointer' onClick={() => { setMenu(!menu) }}>menu</span>
+                <span className='material-icons lg:hidden mx-1 md:mx-3 p-1 text-3xl cursor-pointer' onClick={() => { setMenu(!menu) }}>menu</span>
                 <span className='cursor-pointer'>iNotes</span>
             </div>
         </div>
