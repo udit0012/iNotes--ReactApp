@@ -40,7 +40,7 @@ const NoteItem = ({ note }) => {
         setUnote({ ...unote, [e.target.name]: e.target.value })
     }
     return <>
-        <div className='bg-white mx-1 py-3'>
+        <div className='bg-white mx-1 py-2 md:py-3'>
             <div className='flex justify-between'>
                 <div className='flex items-center space-x-2 mx-3 my-2 capitalize'>
                     <div className={`w-12 h-12 flex justify-center items-center text-2xl rounded-full ${bgcolor} ${fontcolor} capitalize`}>{note.tag.slice(0, 1)}</div>

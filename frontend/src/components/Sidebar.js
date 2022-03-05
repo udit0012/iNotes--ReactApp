@@ -12,6 +12,7 @@ const Sidebar = ({ menu, setMenu }) => {
         else{
             navigate("/auth")
         }
+        setMenu(false)
     }
     return <div className={`w-full lg:h-full bg-green-600 pb-4 relative shadow-lg shadow-gray-500 lg:shadow-none`}>
         <div className="text-2xl md:text-4xl lg:text-5xl px-3 py-2 md:px-6 md:py-4 text-white font-serif">
