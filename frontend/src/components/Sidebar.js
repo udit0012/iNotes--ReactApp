@@ -21,8 +21,8 @@ const Sidebar = ({ menu, setMenu }) => {
             </div>
         </div>
         <div className={`mt-2 md:mt-5 lg:block font-serif`}>
-            <div className='flex items-center text-white border-b rounded-xl border-b-white md:py-4 py-2 text-md md:text-xl lg:text-2xl hover:bg-green-700 cursor-pointer transition-[0.1s]' onClick={()=>{setAddNote(false)}}><span className='material-icons-outlined text-white md:text-4xl mx-4'>dashboard</span>My Notes</div>
-            <div className='flex items-center text-white border-b rounded-xl border-b-white md:py-4 py-2 text-md md:text-xl lg:text-2xl cursor-pointer hover:bg-green-700 transition-[0.1s]' onClick={createnoteclick}><span className='material-icons-outlined text-white md:text-4xl mx-4'>add</span>Create Note</div>
+            <div className='flex items-center text-white border-b rounded-xl border-b-white md:py-4 py-3 text-md md:text-xl lg:text-2xl hover:bg-green-700 cursor-pointer transition-[0.1s]' onClick={()=>{setAddNote(false)}}><span className='material-icons-outlined text-white md:text-4xl mx-4'>dashboard</span>My Notes</div>
+            <div className='flex items-center text-white border-b rounded-xl border-b-white md:py-4 py-3 text-md md:text-xl lg:text-2xl cursor-pointer hover:bg-green-700 transition-[0.1s]' onClick={createnoteclick}><span className='material-icons-outlined text-white md:text-4xl mx-4'>add</span>Create Note</div>
         </div>
     </div>;
 };
