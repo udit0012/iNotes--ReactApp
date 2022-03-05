@@ -8,7 +8,7 @@ const NoteState = (props) => {
     const [alert, setAlert] = useState(null)
     const [user, setUser] = useState({})
     // const link = 'http://localhost:8000'
-    const link = 'https://inotes-reactapp.herokuapp.com/'
+    const link = 'https://inotes-reactapp.herokuapp.com'
 
     const showAlert = (message, type) => {
         setAlert({
