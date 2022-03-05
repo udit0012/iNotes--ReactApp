@@ -9,7 +9,7 @@ const Navbar = () => {
     const d = new Date()
     const [menu, setMenu] = useState(false);
     return <div className='md:w-full flex justify-between lg:py-4'>
-        <div className="lg:hidden text-3xl md:text-4xl lg:text-5xl px-3 py-2 md:px-6 md:py-4 text-green-600 font-serif">
+        <div className="lg:hidden text-3xl md:text-4xl lg:text-5xl py-2 md:px-6 md:py-4 text-green-600 font-serif">
             <div className='flex md:justify-between items-center'>
                 <span className='material-icons lg:hidden mx-3 p-1 text-3xl cursor-pointer' onClick={() => { setMenu(!menu) }}>menu</span>
                 <span className='cursor-pointer'>iNotes</span>
@@ -33,7 +33,7 @@ const Navbar = () => {
                 <button onClick={()=>{logout()}} className="bg-green-100 hover:bg-green-600 text-sm border-green-600 border-[1px] duration-150 text-green-600 hover:text-white font-bold py-1 md:py-2 px-3 md:px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" type="button">
                     Logout
                 </button>
-            </> : <><Link to="/auth" className="bg-green-100 hover:bg-green-600 text-lg border-[1px] border-green-600 duration-150 text-green-600 hover:text-white font-bold py-1 md:py-2 px-3 md:px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" type="button">
+            </> : <><Link to="/auth" className="bg-green-100 hover:bg-green-600 text-sm lg:text-lg border-[1px] border-green-600 duration-150 text-green-600 hover:text-white font-bold py-1 md:py-2 px-3 md:px-4 rounded focus:outline-none focus:shadow-outline hover:shadow-sm hover:shadow-neutral-500" type="button">
                 Login
             </Link></>}
         </div>
