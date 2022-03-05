@@ -55,19 +55,20 @@ Add some enviromental variables -
 ### Homepage
 ![Home Page Demo](https://github.com/udit0012/iNotes--ReactApp/blob/main/Screenshots/HomePage.png)
 ### Sidebar for Categorized news
-![Login Page](https://github.com/udit0012/InstaNews-app/blob/main/Screenshots/Login.png)
+![Login Page](https://github.com/udit0012/iNotes--ReactApp/blob/main/Screenshots/Login.png)
 ### Sidebar for Categorized news
-![Register Page](https://github.com/udit0012/InstaNews-app/blob/main/Screenshots/Register.png)
+![Register Page](https://github.com/udit0012/iNotes--ReactApp/blob/main/Screenshots/Register.png)
 ### Sidebar for Categorized news
-![Create Note](https://github.com/udit0012/InstaNews-app/blob/main/Screenshots/CreateNote.png)
+![Create Note](https://github.com/udit0012/iNotes--ReactApp/blob/main/Screenshots/CreateNote.png)
 ### Category news
-![Update Modal](https://github.com/udit0012/InstaNews-app/blob/main/Screenshots/UpdateNotes.png)
+![Update Modal](https://github.com/udit0012/iNotes--ReactApp/blob/main/Screenshots/UpdateNotes.png)
 ### Mobile View
-![Mobile View](https://github.com/udit0012/InstaNews-app/blob/main/Screenshots/MobileView.png)
-![Mobile View2](https://github.com/udit0012/InstaNews-app/blob/main/Screenshots/Mobileview2.png)
+![Mobile View](https://github.com/udit0012/iNotes--ReactApp/blob/main/Screenshots/MobileView.png)
+![Mobile View2](https://github.com/udit0012/iNotes--ReactApp/blob/main/Screenshots/Mobileview2.png)
 
 
 
 ## Made By
 
 [@UditGoyal (me_gotnochillz)](https://github.com/udit0012)
+
